@@ -12,7 +12,7 @@ export default function Register() {
   const navigate = useNavigate();
 
   const handleRegister = async () => {
-    const res = await axios.post("http://localhost:3001/api/register", {
+    const res = await axios.post("https://secureaccess-h9nd.onrender.com/api/register", {
       name,
       email,
       password,

@@ -12,7 +12,7 @@ export const AuthProvider=({children})=>{
 
      const fetchUser=async()=>{
          try{
-            const res=await axios.get("http://localhost:3001/api/me",{
+            const res=await axios.get("https://secureaccess-h9nd.onrender.com/api/me",{
                 headers: {Authorization : `Bearer ${localStorage.getItem("token")}`}
             });
 

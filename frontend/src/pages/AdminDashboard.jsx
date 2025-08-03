@@ -14,7 +14,7 @@ export default function AdminDashboard() {
 
    const fetchUsers=async ()=>{
      try{
-      const res=await axios.get("http://localhost:3001/api/users",{
+      const res=await axios.get("https://secureaccess-h9nd.onrender.com/api/users",{
         headers:{
            Authorization:`Bearer ${localStorage.getItem("token")}`
         }

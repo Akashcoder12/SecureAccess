@@ -10,7 +10,7 @@ export default function Login() {
   const navigate = useNavigate();
 
   const handleLogin = async () => {
-    const res = await axios.post("http://localhost:3001/api/login", {
+    const res = await axios.post("https://secureaccess-h9nd.onrender.com/api/login", {
       email,
       password,
     });
