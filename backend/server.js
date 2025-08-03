@@ -7,12 +7,25 @@ import cookieParser from 'cookie-parser';
 import authRoutes from './routes/authRoutes.js';
 
 dotenv.config();
-
 const app=express();
+
+const allowedOrigins = [
+  'http://localhost:5173', // local dev
+  'https://secure-access.vercel.app' // production frontend
+];
+
 app.use(cors({
-    origin:"https://secure-access.vercel.app/",
-    Credentials:true
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl)
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true, // if using cookies
 }));
+
 app.use(express.json());
 app.use(cookieParser());
 
