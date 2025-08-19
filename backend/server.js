@@ -38,7 +38,7 @@ app.use('/api',authRoutes);
 
 mongoose.connect(process.env.MONGO_URI)
  .then(()=>{
-     console.log('MongoDB connected');
+     console.log(`MongoDB connected at  ${process.env.MONGO_URI}`);
  })
  .catch((err)=>{
      console.log(err);

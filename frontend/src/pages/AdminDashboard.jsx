@@ -34,7 +34,7 @@ export default function AdminDashboard() {
 
    const deleteUser=async(id)=>{
       try{
-        await axios.delete(`http://localhost:3001/api/users/${id}`,{
+        await axios.delete(`https://secureaccess-h9nd.onrender.com/${id}`,{
           headers:{
              Authorization:`Bearer ${localStorage.getItem("token")}`
           }
