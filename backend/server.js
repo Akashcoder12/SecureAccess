@@ -14,17 +14,8 @@ const allowedOrigins = [
   'https://secure-access.vercel.app' // production frontend
 ];
 
-app.use(cors({
-  origin: function (origin, callback) {
-    // Allow requests with no origin (like mobile apps or curl)
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  credentials: true, // if using cookies
-}));
+app.use(cors({ origin: "*", credentials: true }));
+
 
 app.use(express.json());
 app.use(cookieParser());
