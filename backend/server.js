@@ -11,10 +11,24 @@ const app=express();
 
 const allowedOrigins = [
   'http://localhost:5173', // local dev
-  'https://secure-access.vercel.app' // production frontend
+  'https://secure-access.vercel.app/' // production frontend
 ];
 
-app.use(cors({ origin: "*", credentials: true }));
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        console.error("Blocked by CORS:", origin);
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // include OPTIONS
+    allowedHeaders: ["Content-Type", "Authorization"], // allow auth header
+  })
+);
 
 
 app.use(express.json());
